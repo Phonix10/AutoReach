@@ -54,7 +54,8 @@ print(filtered_df[[name_col, email_col, company_col]])
 
 # --- STEP 3: Email setup ---
 sender_email = "smtppython2@gmail.com"
-app_password = "UDIT112002"  # ⚠️ For local use only. Do not upload to GitHub or share.
+app_password = "qpor dlka osan saxf"  # ⚠️ For local use only. Do not upload to GitHub or share.
+
 
 try:
     yag = yagmail.SMTP(sender_email, app_password)
