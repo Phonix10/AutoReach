@@ -2,6 +2,7 @@ import pandas as pd
 import yagmail
 import time
 import sys
+import os
 
 # --- STEP 1: Load Excel sheet ---
 file_path = r"C:\Users\uditr\Downloads\hr.xlsx"
@@ -63,9 +64,14 @@ except Exception as e:
     print(f"❌ Failed to initialize email client: {e}")
     sys.exit()
 
-# --- STEP 4: Email subject and CV ---
+# --- STEP 4: Ask subject & use fixed CV path ---
 subject = input("\nEnter email subject: ").strip()
-cv_path = input("Enter path to your CV file (e.g., C:/Users/user/Documents/CV.pdf): ").strip()
+cv_path = r"C:\Users\uditr\Downloads\Udit_Ranjan_RESUME.pdf"
+
+# Validate CV file path
+if not os.path.exists(cv_path):
+    print(f"❌ CV file not found: {cv_path}")
+    sys.exit()
 
 # --- STEP 5: Generate email body ---
 def generate_email_body(hr_name, company_name):
@@ -106,9 +112,8 @@ for _, row in filtered_df.iterrows():
             attachments=cv_path
         )
         print(f"✅ Email sent to {receiver_name} ({receiver_email})")
-        time.sleep(2)  # small delay to avoid spam limit
+        time.sleep(2)  # Delay to avoid Gmail rate limits
     except Exception as e:
         print(f"❌ Failed to send email to {receiver_name}: {e}")
 
 print("\n🎯 All emails sent successfully!")
-
