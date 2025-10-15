@@ -5,7 +5,7 @@ import sys
 import os
 
 # --- STEP 1: Load Excel sheet ---
-file_path = r"C:\Users\uditr\Downloads\hr.xlsx"
+file_path = r"C:\Users\uditr\Downloads\hr.xlsx" #change the path
 
 try:
     df = pd.read_excel(file_path)
@@ -54,8 +54,8 @@ print(f"\n✅ Found {len(filtered_df)} contact(s) for '{company}':")
 print(filtered_df[[name_col, email_col, company_col]])
 
 # --- STEP 3: Email setup ---
-sender_email = "smtppython2@gmail.com"
-app_password = "qpor dlka osan saxf"  # ⚠️ For local use only. Do not upload to GitHub or share.
+sender_email = "smtppython2@gmail.com" #change the email
+app_password = "**** **** **** ****"  #change the app password
 
 
 try:
@@ -117,3 +117,5 @@ for _, row in filtered_df.iterrows():
         print(f"❌ Failed to send email to {receiver_name}: {e}")
 
 print("\n🎯 All emails sent successfully!")
+
+
